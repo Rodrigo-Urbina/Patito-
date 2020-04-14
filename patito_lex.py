@@ -20,7 +20,9 @@ tokens = [
     'CTE_C',        ## a
     'EQUAL',        ## =
     'LESSTHAN',     ## <
+    'LESSEQUAL',    ## <=
     'GREATERTHAN',  ## >
+    'GREATEREQUAL', ## >=
     'NOEQUAL',      ## <>
     'PLUS',         ## +
     'MINUS',        ## -
@@ -28,7 +30,7 @@ tokens = [
     'DIV',          ## /
     'AND',          ## &
     'OR',           ## |
-    'SAME',        ## ==
+    'SAME',         ## ==
     'DETER',        ## $
     'TRANS',        ## ¡
     'INVER',        ## ?
@@ -77,7 +79,9 @@ t_COMMENT = r'\%%'
 # Comparison
 t_EQUAL = r'\='
 t_LESSTHAN = r'\<'
+t_LESSEQUAL = r'\<='
 t_GREATERTHAN = r'\>'
+t_GREATEREQUAL = r'\>='
 t_NOEQUAL = r'\<>'
 t_SAME = r'\=='
 

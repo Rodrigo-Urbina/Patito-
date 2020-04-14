@@ -18,6 +18,7 @@ tokens = [
     'CTE_I',        ## 123
     'CTE_F',        ## 123.123
     'CTE_C',        ## a
+    'CTE_S',        ## palabra
     'EQUAL',        ## =
     'LESSTHAN',     ## <
     'LESSEQUAL',    ## <=
@@ -46,7 +47,7 @@ reserverd = {
     'void' : 'VOID',
     'principal' : 'PRINCIPAL',
     'funcion' : 'FUNCION',
-    'regreso' : 'REGRESO',
+    'regresa' : 'REGRESA',
     'lee' : 'LEE',
     'escribe' : 'ESCRIBE',
     'si' : 'SI',
@@ -56,7 +57,7 @@ reserverd = {
     'haz' : 'HAZ',
     'desde' : 'DESDE',
     'hasta' : 'HASTA',
-    'hacer' : 'HACER'
+    'hacer' : 'HACER',
 }
 
 
@@ -104,6 +105,7 @@ t_INVER = r'\?'
 t_CTE_I = r'[0-9]+'
 t_CTE_F = r'[0-9]+\.[0-9]+'
 t_CTE_C = r'(\'[^\']*\')'
+t_CTE_S = r'\"([^\\\n]|(\\.))*?\"'
 
 tokens = tokens + list(reserverd.values())
 

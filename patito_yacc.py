@@ -121,6 +121,121 @@ def p_varCte(p):
            | CTE_F
     '''
 
+def p_exp(p):
+  '''
+  exp: t_exp OR exp
+  	 | t_exp
+  '''
+
+def p_t_exp(p):
+  '''
+  t_exp: g_exp AND t_exp
+  		 | g_exp
+  '''
+
+def p_g_exp(p):
+  '''
+  g_exp: m_exp
+  		| LESSTHAN m_exp
+      |	LESSEQUAL m_exp
+      | GREATERTHAN m_exp
+      | GREATEREQUAL m_exp
+      | EQUAL m_exp
+      | NOEQUAL m_exp
+  '''
+
+def p_m_exp(p):
+  '''
+  m_exp: t
+  		| t PLUS m_exp
+      | t MINUS m_exp
+  '''
+
+def p_t(p):
+  '''
+  	t: f
+    	| f MULT t
+      | f DIV t
+      | f DETER t
+      | f TRANS t
+      | f INVER t
+  '''
+
+def p_f(p):
+  '''
+  f: LPAREN exp RPAREN
+  	| CTE_I
+    | CTE_F
+    | CTE_C
+    | variable
+    | llamada
+  '''
+
+def p_condicion(p):
+  '''
+  condicion: SI LPAREN exp RPAREN bloque SINO bloque SEMICOLON
+  					|SI LPAREN exp RPAREN bloque SEMICOLON
+  '''
+
+def p_ciclo_w(p):
+  '''
+  ciclo_w: MIENTRAS LPAREN exp RPAREN HAZ bloque
+  '''
+
+
+def p_ciclo_f(p):
+  '''
+  ciclo_f: DESDE asigna HASTA CTE_I HAZ bloque
+  '''
+
+
+
+
+def p_var_cte(p):
+	'''
+  var_cte: exp
+  		|CTE_I
+      |CTE_F
+  '''
+
+
+
+def p_retorno(p):
+  '''
+  retorno: REGRESA exp SEMICOLON
+  '''
+
+
+##seccion de VARIABLES ya sea globales o de funcion
+def p_vars(p):
+  '''
+  vars: VAR vars_aux
+  '''
+
+  ## seccion de vars para definir varios varios tipos de  id con o sin  brackets
+def p_vars_aux(p):
+  '''
+  vars_aux: tipo_simple vars_aux1
+  		| tipo_simple vars_aux1 vars_aux
+  '''
+
+  ##seccion de vars para ciclo de varias id con brackets
+def p_vars_aux1(p):
+  '''
+  vars_aux1: vars_aux2 SEMICOLON
+  		| vars_aux2 COMA vars_aux1
+  '''
+
+## seccion de vars para id con brackets
+def p_vars_aux2(p):
+  '''
+    vars_aux2: id
+    		| id LSQUARE CTE_I RSQUARE
+        | id LSQUARE CTE_I RSQUARE LSQUARE CTE_I RSQUARE
+  '''
+
+
+
 ##error function for parser
 def p_error(p):
     global success
